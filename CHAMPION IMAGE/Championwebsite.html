@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Computer Training Institute</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #4CAF50, #FFFFFF);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .logo {
+        font-size: small;
+    }
+    .navbar {
+        backdrop-filter: blur(10px);
+        background-color: rgba(255,255,255,0.8);
+    }
+    .card-custom {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    footer {
+        background-color: rgba(0,0,0,0.1);
+        padding: 15px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .form-control {
+        border-radius: 10px;
+    }
+    .btn-custom {
+        background-color: #2e7d32;
+        color: #fff;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+    .btn-custom:hover {
+        background-color: #1b5e20;
+    }
+    .nav-link.active {
+        font-weight: bold;
+        color: #2e7d32;
+    }
+    #notification {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        z-index: 1050;
+        min-width: 250px;
+    }
+</style>
+</head>
+<body>
+
+<div id="notification"></div>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid px-4 py-2">
+    <img src="c:\Users\levis\Downloads\126894783_111623757434200_2588319547498989544_n.jpg" alt="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3" id="navMenu">
+        <li class="nav-item">
+          <a class="nav-link active" href="#home" onclick="showSection('home', this)">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#login" onclick="showSection('login', this)">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#register" onclick="showSection('register', this)">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#student-portal" onclick="showSection('student-portal', this)">Student Portal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#teacher-platform" onclick="showSection('teacher-platform', this)">Teacher Platform</a>
+        </li>
+    
+        <li class="nav-item d-none" id="logoutItem">
+          <button class="btn btn-sm btn-outline-danger" onclick="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-4">
+
+  <section id="home" class="text-center py-5">
+    <h1 class="display-4 fw-bold" style="color: blue;">Welcome to Champion Image Institute</h1>
+    <p class="lead mt-3" style="color: #080101;">Your Gateway to Computer Skills and Certifications</p>
+  </section>
+
+ 
+<section id="login" class="d-none py-4" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e'); background-size: cover; background-position: center;">
+  <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+   
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="card bg-light bg-opacity-75 rounded-3 p-3" style="width: 250px; height: 250px; overflow: hidden;">
+        <img id="studentPhoto" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Student Photo" class="img-fluid rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+    </div>
+   
+    <div class="col-md-6">
+      <div class="card card-custom p-4 bg-white bg-opacity-90">
+        <h3 class="text-center mb-4" style="font-family:'Arial Black', sans-serif;">Login</h3>
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn btn-custom w-100">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="register" class="d-none py-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-custom p-4">
+          <h3 class="text-center mb-4" style="font-family:'Arial Black', sans-serif;">Register New Student</h3>
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="regName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="regName" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <label for="regEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="regEmail" placeholder="Enter email" required>
+            </div>
+            <div class="mb-3">
+              <label for="regPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="student-portal" class="d-none py-4">
+    <h2 class="text-center mb-4" style="font-family:'Arial Black', sans-serif;">Student Portal</h2>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-12 text-center">
+        <button class="btn btn-outline-primary me-2" onclick="showDashboard('assignments')">Assignments</button>
+        <button class="btn btn-outline-primary" onclick="showDashboard('exams')">Exams Schedule</button>
+      </div>
+    </div>
+    
+    <div id="studentDashboard">
+        
+        <div id="assignments" class="d-none">
+            <div class="card card-custom p-4 mb-4">
+                <h4>Upload Assignment</h4>
+                <form id="assignmentForm">
+                    <div class="mb-3">
+                        <label for="assignmentFile" class="form-label">Select Assignment File</label>
+                        <input class="form-control" type="file" id="assignmentFile" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom">Upload</button>
+                </form>
+            </div>
+            <div class="card card-custom p-4">
+                <h4>Your Submitted Assignments</h4>
+                <ul class="list-group" id="submittedAssignments">
+                    <li class="list-group-item">No assignments uploaded yet.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="exams" class="d-none">
+            <div class="card card-custom p-4 mb-4">
+                <h4>Upcoming Exams</h4>
+                <ul class="list-group" id="examSchedule">
+                    <li class="list-group-item">No scheduled exams.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="teacher-platform" class="d-none py-4">
+    <h2 class="text-center mb-4" style="font-family:'Arial Black', sans-serif;">Teacher Platform</h2>
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-12 text-center mb-3">
+        <button class="btn btn-outline-primary me-2" onclick="showTeacherDashboard('createExam')">Create Exam</button>
+        <button class="btn btn-outline-primary me-2" onclick="showTeacherDashboard('manageQuestions')">Manage Questions</button>
+        <button class="btn btn-outline-primary me-2" onclick="showTeacherDashboard('uploadExamMarks')">Upload Exam Marks</button>
+        <button class="btn btn-outline-primary" onclick="showTeacherDashboard('studentUpload')">Student Uploads</button>
+      </div>
+    </div>
+    
+    <div id="teacherDashboard">
+        <div id="createExam" class="d-none">
+            <div class="card card-custom p-4 mb-4">
+                <h4>Create New Exam</h4>
+                <form id="examForm">
+                    <div class="mb-3">
+                        <label for="examTitle" class="form-label">Exam Title</label>
+                        <input type="text" class="form-control" id="examTitle" placeholder="Enter exam title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="examDate" class="form-label">Exam Date</label>
+                        <input type="date" class="form-control" id="examDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom">Create Exam</button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="manageQuestions" class="d-none">
+            <div class="card card-custom p-4 mb-4">
+                <h4>Upload Exam Questions</h4>
+                <form id="questionsForm">
+                    <div class="mb-3">
+                        <label for="questionFile" class="form-label">Upload Questions File</label>
+                        <input class="form-control" type="file" id="questionFile" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom">Upload Questions</button>
+                </form>
+            </div>
+            <div class="card card-custom p-4">
+                <h4>Existing Exams</h4>
+                <ul class="list-group" id="examList">
+                    <li class="list-group-item">No exams created yet.</li>
+                </ul>
+            </div>
+        </div>
+
+       
+        <div id="uploadExamMarks" class="d-none">
+          <div class="card card-custom p-4 mb-4">
+            <h4>Upload Exam Marks</h4>
+            <form id="examMarksForm">
+              <div class="mb-3">
+                <label for="examMarksInput" class="form-label">Enter Exam Marks</label>
+                <input type="text" class="form-control" id="examMarksInput" placeholder="e.g., Student1: 85" required>
+              </div>
+              <button type="submit" class="btn btn-custom">Upload Marks</button>
+            </form>
+          </div>
+          <div class="card card-custom p-4">
+            <h4>Uploaded Exam Marks (visible to students)</h4>
+            <ul class="list-group" id="examMarksList">
+              <li class="list-group-item">No exam marks uploaded yet.</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div id="studentUpload" class="d-none">
+          <div class="card card-custom p-4 mb-4">
+            <h4>Upload File (to Teacher)</h4>
+            <form id="studentUploadForm">
+              <div class="mb-3">
+                <label for="studentFile" class="form-label">Select File</label>
+                <input class="form-control" type="file" id="studentFile" required>
+              </div>
+              <button type="submit" class="btn btn-custom">Upload</button>
+            </form>
+          </div>
+          <div class="card card-custom p-4">
+            <h4>Student Files (visible to Teacher)</h4>
+            <ul class="list-group" id="studentFilesList">
+              <li class="list-group-item">No files uploaded yet.</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Champion Image Computer Training Institute. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+ 
+  const examMarks = []; 
+  const studentUploads = []; 
+
+  function showSection(sectionId, element=null) {
+    const sections = ['home', 'login', 'register', 'student-portal', 'teacher-platform'];
+    sections.forEach(id => {
+      document.getElementById(id).classList.toggle('d-none', id !== sectionId);
+    });
+    document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+      link.classList.remove('active');
+    });
+    if (element) element.classList.add('active');
+    if (sectionId !== 'student-portal') resetStudentDashboard();
+    if (sectionId !== 'teacher-platform') resetTeacherDashboard();
+  }
+
+  function resetStudentDashboard() {
+    document.getElementById('assignments').classList.add('d-none');
+    document.getElementById('exams').classList.add('d-none');
+  }
+  function resetTeacherDashboard() {
+    document.getElementById('createExam').classList.add('d-none');
+    document.getElementById('manageQuestions').classList.add('d-none');
+    document.getElementById('uploadExamMarks').classList.add('d-none');
+    document.getElementById('studentUpload').classList.add('d-none');
+  }
+
+  function showDashboard(section) {
+    document.querySelectorAll('#studentDashboard > div').forEach(div => div.classList.add('d-none'));
+    document.getElementById(section).classList.remove('d-none');
+  }
+
+  function showTeacherDashboard(section) {
+    document.querySelectorAll('#teacherDashboard > div').forEach(div => div.classList.add('d-none'));
+    document.getElementById(section).classList.remove('d-none');
+    if (section === 'uploadExamMarks') {
+      updateExamMarksList();
+    } else if (section === 'studentUpload') {
+      updateStudentFilesList();
+    }
+  }
+
+  document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      showSection(link.getAttribute('href').substring(1), link);
+    });
+  });
+
+  showSection('home');
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Login submitted! (Implement backend)');
+    showSection('student-portal');
+    document.getElementById('logoutItem').classList.remove('d-none');
+  });
+  document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Registration submitted! (Implement backend)');
+    showSection('login');
+  });
+
+  document.getElementById('assignmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fileInput = document.getElementById('assignmentFile');
+    if (fileInput.files.length > 0) {
+      const filename = fileInput.files[0].name;
+      const list = document.getElementById('submittedAssignments');
+      const li = document.createElement('li');
+      li.className = 'list-group-item';
+      li.textContent = filename;
+      list.appendChild(li);
+      alert('Assignment uploaded!');
+      fileInput.value = '';
+    }
+  });
+
+  document.getElementById('examForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const title = document.getElementById('examTitle').value;
+    const date = document.getElementById('examDate').value;
+    const list = document.getElementById('examList');
+    const li = document.createElement('li');
+    li.className = 'list-group-item';
+    li.textContent = `${title} on ${date}`;
+    list.appendChild(li);
+    alert('Exam created!');
+    document.getElementById('examForm').reset();
+  });
+
+  document.getElementById('questionsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Questions uploaded! (Implement backend)');
+  });
+
+  // Logout function
+  function logout() {
+    showSection('home');
+    document.getElementById('logoutItem').classList.add('d-none');
+    alert('Logged out!');
+  }
+
+  
+  const studentPhotos = [
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    "https://images.unsplash.com/photo-1549924231-f129b911e442",
+    "https://images.unsplash.com/photo-1520813792240-56fc4a3765a0",
+    "https://images.unsplash.com/photo-1544005313-94ddf0286df2"
+  ];
+
+  let currentPhotoIndex = 0;
+
+ 
+  function rotateStudentPhoto() {
+    currentPhotoIndex = (currentPhotoIndex + 1) % studentPhotos.length;
+    document.getElementById('studentPhoto').src = studentPhotos[currentPhotoIndex];
+  }
+ 
+  setInterval(rotateStudentPhoto, 3000);
+
+  
+  function updateExamMarksList() {
+    const list = document.getElementById('examMarksList');
+    list.innerHTML = '';
+    if (examMarks.length === 0) {
+      list.innerHTML = '<li class="list-group-item">No exam marks uploaded yet.</li>';
+    } else {
+      examMarks.forEach(mark => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = mark;
+        list.appendChild(li);
+      });
+    }
+  }
+
+ 
+  function updateStudentFilesList() {
+    const list = document.getElementById('studentFilesList');
+    list.innerHTML = '';
+    if (studentUploads.length === 0) {
+      list.innerHTML = '<li class="list-group-item">No files uploaded yet.</li>';
+    } else {
+      studentUploads.forEach(file => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.textContent = file;
+        list.appendChild(li);
+      });
+    }
+  }
+
+  
+  document.getElementById('examMarksForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input = document.getElementById('examMarksInput');
+    if (input.value.trim() !== "") {
+      examMarks.push(input.value.trim());
+      updateExamMarksList();
+      alert('Exam marks uploaded!');
+      input.value = '';
+    }
+  });
+
+ 
+  document.getElementById('studentUploadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fileInput = document.getElementById('studentFile');
+    if (fileInput.files.length > 0) {
+      const filename = fileInput.files[0].name;
+      studentUploads.push(filename);
+      updateStudentFilesList();
+      alert('File uploaded!');
+      fileInput.value = '';
+    }
+  });
+
+</script>
+</body>
+</html>
